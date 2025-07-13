@@ -34,9 +34,9 @@ This project demonstrates a **distributed task queue architecture** where image 
 6. Run on another terminal `node workers/imageWorkers.js`
 
 ## Endpoints:
-POST `http://localhost:9300/job/upload-image` : 
-      Headers: multipart/form-data
-      Body: (key:image), file, value: input your image
+POST `http://localhost:9300/job/upload-image` :    
+      Headers: multipart/form-data    
+      Body: (key:image), file, value: input your image    
 
 GET `http://localhost:9300/job/status/<jobId>`
 ### Note: you will get job id from the response of the post endpoint
