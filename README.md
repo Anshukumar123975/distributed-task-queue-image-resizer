@@ -25,6 +25,34 @@ This project demonstrates a **distributed task queue architecture** where image 
 4. Real-time job status tracking via MongoDB
 5. Easily scalable by adding more workers
 
+## Architecture:
+             ┌────────────────────┐
+             |    Client (UI)     |
+             └────────┬───────────┘
+                      │
+        Upload image  │    
+                      ▼
+             ┌────────────────────┐
+             | Express API Server |
+             └────────┬───────────┘
+                      │
+       Enqueue Job    ▼
+             ┌────────────────────┐
+             │   Redis Queue      |
+             └────────┬───────────┘
+                      │
+     Consume Job      ▼
+             ┌────────────────────┐
+             │  Worker Instance   │
+             │      (Sharp)       | 
+             └────────┬───────────┘
+                      │
+     Update Status    ▼
+             ┌────────────────────┐
+             │     MongoDB        │
+             └────────────────────┘
+
+
 ## How to run and test:
 1. Clone the repository
 2. Run `npm i` in the terminal
@@ -40,4 +68,6 @@ POST `http://localhost:9300/job/upload-image` :
 
 GET `http://localhost:9300/job/status/<jobId>`
 ### Note: you will get job id from the response of the post endpoint
+
+
 
